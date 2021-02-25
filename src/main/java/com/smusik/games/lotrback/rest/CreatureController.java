@@ -15,6 +15,6 @@ public class CreatureController {
 
     @GetMapping("/get-creature-by-name")
     public CreatureEntity getCreatureByName(@RequestParam String name) {
-        return creatureService.getCreatureEntityByName();
+        return creatureService.getCreatureEntityByName(name);
     }
 }
