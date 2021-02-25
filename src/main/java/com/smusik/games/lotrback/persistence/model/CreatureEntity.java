@@ -17,6 +17,11 @@ public class CreatureEntity {
     public CreatureEntity() {
     }
 
+    public CreatureEntity(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

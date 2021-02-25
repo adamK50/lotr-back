@@ -2,7 +2,6 @@ package com.smusik.games.lotrback.service;
 
 import com.smusik.games.lotrback.persistence.dao.CreatureRepository;
 import com.smusik.games.lotrback.persistence.model.CreatureEntity;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
