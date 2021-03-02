@@ -5,15 +5,42 @@
                     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
 
-    <changeSet  id="1614000265_create_table_creature"  author="dgwiazda">
-        <createTable  tableName="creature">
-            <column  name="id"  type="int">
-                <constraints  primaryKey="true"  nullable="false"/>
-            </column>
-            <column  name="name"  type="varchar(100)">
-                <constraints  nullable="false"/>
-            </column>
-        </createTable>
+    <changeSet  id="1614717494_create_table_creature"  author="dgwiazda">
+        <sql>
+            create table creature
+            (
+            id serial,
+            name varchar(150) not null,
+            unit_points int not null,
+            points_sum int not null,
+            movement float not null,
+            fight varchar(10) not null,
+            strength int not null,
+            defense int not null,
+            attack int not null,
+            lives int not null,
+            courage int not null,
+            power int not null,
+            will int not null,
+            fortune int not null,
+            unit_type_id int not null
+            constraint table_name_unit_type_id_fk
+            references unit_type (id),
+            fraction_id int not null
+            constraint table_name_fraction_id_fk
+            references fraction (id)
+            );
+
+            create unique index creature_id_uindex
+            on creature (id);
+
+            create unique index creature_name_uindex
+            on creature (name);
+
+            alter table creature
+            add constraint creature_pk
+            primary key (id);
+        </sql>
     </changeSet>
 
 </databaseChangeLog>
