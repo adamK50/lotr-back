@@ -1,6 +1,5 @@
 # Compiled class file
 *.class
-*/target/**
 
 # Log file
 *.log
@@ -26,4 +25,8 @@ hs_err_pid*
 # file: ~/.gitignore_global
 .idea
 *.iml
+
+#Maven
+*/target/*
+target/*
 
