@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -23,5 +24,27 @@ public class SpecialAttackEntity {
     public SpecialAttackEntity(Long id, String attack) {
         this.id = id;
         this.attack = attack;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SpecialAttackEntity that = (SpecialAttackEntity) o;
+        return id.equals(that.id) &&
+                attack.equals(that.attack);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, attack);
+    }
+
+    @Override
+    public String toString() {
+        return "SpecialAttackEntity{" +
+                "id=" + id +
+                ", attack='" + attack + '\'' +
+                '}';
     }
 }

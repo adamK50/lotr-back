@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -23,5 +24,27 @@ public class OptionEntity {
     public OptionEntity(Long id, String option) {
         this.id = id;
         this.option = option;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OptionEntity that = (OptionEntity) o;
+        return id.equals(that.id) &&
+                option.equals(that.option);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, option);
+    }
+
+    @Override
+    public String toString() {
+        return "OptionEntity{" +
+                "id=" + id +
+                ", option='" + option + '\'' +
+                '}';
     }
 }
