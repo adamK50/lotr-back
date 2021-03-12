@@ -4,87 +4,6 @@
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-
-    <changeSet  id="1614601570_create_table_option"  author="dgwiazda">
-        <sql>
-            create table t_option
-            (
-                id bigint not null,
-                option varchar(100) not null
-            );
-
-            create unique index option_id_uindex
-            on t_option (id);
-
-            create unique index option_option_uindex
-            on t_option (option);
-
-            alter table t_option
-            add constraint option_pk
-            primary key (id);
-        </sql>
-    </changeSet>
-
-    <changeSet  id="1614601570_create_table_special_attack"  author="dgwiazda">
-        <sql>
-            create table t_special_attack
-            (
-                id bigint not null,
-                attack varchar(100) not null
-            );
-
-            create unique index special_attack_attack_uindex
-            on t_special_attack (attack);
-
-            create unique index special_attack_id_uindex
-            on t_special_attack (id);
-
-            alter table t_special_attack
-            add constraint special_attack_pk
-            primary key (id);
-        </sql>
-    </changeSet>
-
-    <changeSet  id="1614601570_create_table_magic"  author="dgwiazda">
-        <sql>
-            create table t_magic
-            (
-                id bigint not null,
-                magic varchar(100) not null
-            );
-
-            create unique index magic_id_uindex
-            on t_magic (id);
-
-            create unique index magic_magic_uindex
-            on t_magic (magic);
-
-            alter table t_magic
-            add constraint magic_pk
-            primary key (id);
-        </sql>
-    </changeSet>
-
-    <changeSet  id="1614601570_create_table_unit_type"  author="dgwiazda">
-        <sql>
-            create table t_unit_type
-            (
-                id bigint not null,
-                unit_type varchar(150) not null
-            );
-
-            create unique index unit_type_id_uindex
-            on t_unit_type (id);
-
-            create unique index unit_type_unit_type_uindex
-            on t_unit_type (unit_type);
-
-            alter table t_unit_type
-            add constraint unit_type_pk
-            primary key (id);
-        </sql>
-    </changeSet>
-
     <changeSet  id="1614601570_create_table_fraction"  author="dgwiazda">
         <sql>
             create table t_fraction
@@ -105,6 +24,41 @@
 
             alter table t_fraction
             add constraint fraction_pk
+            primary key (id);
+        </sql>
+    </changeSet>
+    
+    <changeSet id="1615555760_create_table_creature" author="dgwiazda">
+        <sql>
+            create table creature
+            (
+                id bigint not null,
+                unit_points int not null,
+                points_sum int not null,
+                movement float not null,
+                fight varchar(10) not null,
+                strength int not null,
+                defense int not null,
+                attack int not null,
+                lives int not null,
+                courage int not null,
+                power int not null,
+                will int not null,
+                fortune int not null,
+                option varchar(100),
+                special_attack varchar(100),
+                magic varchar(100),
+                unit_type varchar(100) not null,
+                fraction_id int not null
+                    constraint creature_t_fraction_id_fk
+                        references t_fraction (id)
+            );
+
+            create unique index creature_id_uindex
+            on creature (id);
+
+            alter table creature
+            add constraint creature_pk
             primary key (id);
         </sql>
     </changeSet>
