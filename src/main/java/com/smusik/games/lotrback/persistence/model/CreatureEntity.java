@@ -20,24 +20,42 @@ public class CreatureEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CreatureIdGenSeq")
     @SequenceGenerator(name = "CreatureIdGenSeq", sequenceName = "CREATURE_ID_SEQ", allocationSize = 1)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "name")
     private String name;
+    @Column(name = "unitPoints")
     private Integer unitPoints;
+    @Column(name = "pointsSum")
     private Integer pointsSum;
+    @Column(name = "movement")
     private Float movement;
+    @Column(name = "fight")
     private String fight;
+    @Column(name = "strength")
     private Integer strength;
+    @Column(name = "defense")
     private Integer defense;
+    @Column(name = "attack")
     private Integer attack;
+    @Column(name = "lives")
     private Integer lives;
+    @Column(name = "courage")
     private Integer courage;
+    @Column(name = "power")
     private Integer power;
+    @Column(name = "will")
     private Integer will;
+    @Column(name = "fortune")
     private Integer fortune;
+    @Column(name = "option")
     private Option option;
+    @Column(name = "specialAttack")
     private SpecialAttack specialAttack;
+    @Column(name = "magic")
     private Magic magic;
+    @Column(name = "unitType")
     private UnitType unitType;
 
     @ManyToOne
