@@ -17,9 +17,12 @@ public class FractionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FractionIdGenSeq")
     @SequenceGenerator(name = "FractionIdGenSeq", sequenceName = "FRACTION_ID_SEQ", allocationSize = 1)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "fraction")
     private String fraction;
+    @Column(name = "destruction")
     private Integer destruction;
 
     public FractionEntity(Long id, String fraction, Integer destruction) {
